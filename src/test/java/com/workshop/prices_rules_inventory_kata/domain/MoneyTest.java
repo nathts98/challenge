@@ -25,4 +25,9 @@ public class MoneyTest {
         Assertions.assertThrows(InvalidMoneyException.class, () -> Money.of("abc"));
     }
 
+    @Test
+    void should_return_true_when_comparing_empty_decimals(){
+        Assertions.assertEquals(Money.of("10"), Money.of("10.00"));
+    }
+
 }
