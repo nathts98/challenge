@@ -19,4 +19,10 @@ public class MoneyTest {
     void should_throw_invalid_money_exception_if_negative(){
         Assertions.assertThrows(InvalidMoneyException.class, () -> Money.of("-5.0"));
     }
+
+    @Test
+    void should_throw_invalid_money_exception_if_letters(){
+        Assertions.assertThrows(InvalidMoneyException.class, () -> Money.of("abc"));
+    }
+
 }
