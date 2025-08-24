@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Currency;
 
 @EqualsAndHashCode
 public class Money {
@@ -14,7 +15,7 @@ public class Money {
         this.amount = amount;
     }
 
-    static Money of(String amount) {
+    static Money of(String amount, Currency currency) {
         try {
             BigDecimal parsedAndNormalized = new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP);
 
