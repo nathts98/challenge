@@ -41,8 +41,11 @@ public class MoneyTest {
 
     @Test
     void should_return_new_money_vo_with_sum_result_when_add_method_called(){
-        Money some = Money.of("20", euro);
-        Money sum = some.add(Money.of("25", euro));
+        Money some = Money.of("10", euro);
+        Money sum = some.add(Money.of("2.5", euro));
+        Money result = Money.of("12.5", euro);
+
+        Assertions.assertEquals(sum, result);
     }
 
 }

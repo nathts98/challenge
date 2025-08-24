@@ -30,4 +30,9 @@ public class Money {
             throw new InvalidMoneyException("Amount must be numeric");
         }
     }
+
+    public Money add(Money other) {
+        BigDecimal sum = this.amount.add(other.amount);
+        return new Money(sum, this.currency);
+    }
 }
