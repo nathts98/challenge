@@ -13,4 +13,9 @@ public class MoneyTest {
         Assertions.assertNotNull(money);
         Assertions.assertInstanceOf(Money.class, money);
     }
+
+    @Test
+    void should_throw_invalid_money_exception_if_negative(){
+        Assertions.assertThrows(InvalidMoneyException.class, () -> Money.of("-5.0"));
+    }
 }
