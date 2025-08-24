@@ -48,4 +48,12 @@ public class MoneyTest {
         Assertions.assertEquals(sum, result);
     }
 
+    @Test
+    void should_not_add_money_if_different_currency(){
+        Currency dollar = Currency.getInstance("USD");
+        Money some = Money.of("10", euro);
+
+        Assertions.assertThrows(InvalidMoneyException.class, ()-> some.add(Money.of("2.5", dollar)));
+    }
+
 }
