@@ -5,12 +5,15 @@ import com.workshop.prices_rules_inventory_kata.domain.exceptions.InvalidMoneyEx
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Currency;
+
 
 public class MoneyTest {
+    Currency euro = Currency.getInstance("EUR");
 
     @Test
     void should_create_money_object(){
-        Money money = Money.of("10.00");
+        Money money = Money.of("10.00", euro);
         Assertions.assertNotNull(money);
         Assertions.assertInstanceOf(Money.class, money);
     }
