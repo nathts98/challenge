@@ -32,7 +32,10 @@ public class Money {
     }
 
     public Money add(Money other) {
-        BigDecimal sum = this.amount.add(other.amount);
+        if (!other.currency.equals(this.currency)) {
+            throw new InvalidMoneyException("Currency must match to add money");
+        }
+        BigDecimal sum = this.amount.add(other.amount).setScale(2, RoundingMode.HALF_UP);
         return new Money(sum, this.currency);
     }
 }
