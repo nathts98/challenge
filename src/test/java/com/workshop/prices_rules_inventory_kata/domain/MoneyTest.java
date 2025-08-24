@@ -39,4 +39,10 @@ public class MoneyTest {
         Assertions.assertNotEquals(Money.of("10", euro), Money.of("10", dollar));
     }
 
+    @Test
+    void should_return_new_money_vo_with_sum_result_when_add_method_called(){
+        Money some = Money.of("20", euro);
+        Money sum = some.add(Money.of("25", euro));
+    }
+
 }
