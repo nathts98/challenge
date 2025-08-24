@@ -33,4 +33,10 @@ public class MoneyTest {
         Assertions.assertEquals(Money.of("10", euro), Money.of("10.00", euro));
     }
 
+    @Test
+    void should_return_not_equal_if_currency_is_different(){
+        Currency dollar = Currency.getInstance("USD");
+        Assertions.assertNotEquals(Money.of("10", euro), Money.of("10", dollar));
+    }
+
 }
