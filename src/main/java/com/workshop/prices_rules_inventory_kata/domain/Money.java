@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 
 @EqualsAndHashCode
 public class Money {
-    private BigDecimal amount;
+    private final BigDecimal amount;
 
     private Money(BigDecimal amount) {
         this.amount = amount;
