@@ -59,10 +59,10 @@ public class MoneyTest {
     @Test
     void should_return_new_vo_when_subtract_method_called(){
         Money some = Money.of("10", euro);
-        Money sum = some.subtract(Money.of("2.5", euro));
+        Money sub = some.subtract(Money.of("2.5", euro));
         Money result = Money.of("7.5", euro);
 
-        Assertions.assertEquals(sum, result);
+        Assertions.assertEquals(sub, result);
     }
 
 }

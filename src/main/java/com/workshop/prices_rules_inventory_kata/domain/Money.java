@@ -13,19 +13,19 @@ public class Money {
     private final Currency currency;
 
     private Money(BigDecimal amount, Currency currency) {
-        this.amount = amount;
+        this.amount = amount.setScale(2, RoundingMode.HALF_UP);
         this.currency = currency;
     }
 
     static Money of(String amount, Currency currency) {
         try {
-            BigDecimal parsedAndNormalized = new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP);
+            BigDecimal parsed = new BigDecimal(amount);
 
-            if(parsedAndNormalized.compareTo(BigDecimal.ZERO) < 0){
+            if(parsed.compareTo(BigDecimal.ZERO) < 0){
                 throw new InvalidMoneyException("Amount must be >= 0");
             }
 
-            return new Money(parsedAndNormalized, currency);
+            return new Money(parsed, currency);
         } catch (NumberFormatException e){
             throw new InvalidMoneyException("Amount must be numeric");
         }
@@ -35,7 +35,13 @@ public class Money {
         if (!other.currency.equals(this.currency)) {
             throw new InvalidMoneyException("Currency must match to add money");
         }
-        BigDecimal sum = this.amount.add(other.amount).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal sum = this.amount.add(other.amount);
         return new Money(sum, this.currency);
     }
+
+    public Money subtract(Money other) {
+        BigDecimal result = this.amount.subtract(other.amount);
+        return new Money(result, this.currency);
+    }
+
 }
