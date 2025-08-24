@@ -10,9 +10,11 @@ import java.util.Currency;
 @EqualsAndHashCode
 public class Money {
     private final BigDecimal amount;
+    private final Currency currency;
 
-    private Money(BigDecimal amount) {
+    private Money(BigDecimal amount, Currency currency) {
         this.amount = amount;
+        this.currency = currency;
     }
 
     static Money of(String amount, Currency currency) {
@@ -23,7 +25,7 @@ public class Money {
                 throw new InvalidMoneyException("Amount must be >= 0");
             }
 
-            return new Money(parsedAndNormalized);
+            return new Money(parsedAndNormalized, currency);
         } catch (NumberFormatException e){
             throw new InvalidMoneyException("Amount must be numeric");
         }
