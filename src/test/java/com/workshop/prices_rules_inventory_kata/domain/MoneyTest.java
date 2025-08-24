@@ -1,6 +1,7 @@
 package com.workshop.prices_rules_inventory_kata.domain;
 
 
+import com.workshop.prices_rules_inventory_kata.domain.exceptions.InvalidMoneyException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
